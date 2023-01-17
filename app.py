@@ -19,8 +19,8 @@ from form import EnterData
 app = Flask(__name__)
 Bootstrap(app)
 app.config['SECRET_KEY'] = 'secretkey123'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://gtelgbvqkzaqac:24e1ea5f56dfdc788cdcdc3d6d428af7eec5bcb02b0f100716e3b221036c830f@ec2-3-223-169-166.compute-1.amazonaws.com:5432/dd3qbfmg2hoe94'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:diez203040@localhost:5432/template1'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://uozkgicswjewvc:52d290cbd35bebf2c13bfafa6af69228235f21c7c5c1347f8e0f4331a7f441ba@ec2-54-160-109-68.compute-1.amazonaws.com:5432/dapiefrth8pcaq'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:diez203040@localhost:5432/template2'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = "filesystem"
@@ -250,7 +250,7 @@ def anillos(joyeria):
         new_anillo = Anillos(nombre=request.form['nombre'], 
                             descripcion=request.form['descripcion'], 
                             material=request.form['material'], 
-                            precio=request.form['precio'], 
+                            precio=float(request.form['precio']), 
                             codigo=int(codigo_anillo), 
                             empresa=joyeria)
         session.add(new_anillo)
@@ -263,7 +263,7 @@ def anillos(joyeria):
         session.commit()
 
         flash(request.form['nombre'] + ' agregado exitosamente')
-        return redirect(url_for('anillos', joyeria=joyeri, menu_principal=menu_principal))
+        return redirect(url_for('anillos', joyeria=joyeria, menu_principal=menu_principal))
     else:
         return render_template('anillos.html', form=form, joyeria=joyeria, menu_principal=menu_principal)
 
@@ -278,7 +278,7 @@ def aretes(joyeria):
         new_arete = Aretes(nombre=request.form['nombre'], 
                             descripcion=request.form['descripcion'], 
                             material=request.form['material'], 
-                            precio=request.form['precio'], 
+                            precio=float(request.form['precio']), 
                             codigo=int(codigo_arete), 
                             empresa=joyeria)
         session.add(new_arete)
@@ -306,7 +306,7 @@ def cadenas(joyeria):
         new_collar = Cadenas(nombre=request.form['nombre'], 
                             descripcion=request.form['descripcion'], 
                             material=request.form['material'], 
-                            precio=request.form['precio'], 
+                            precio=float(request.form['precio']), 
                             codigo=int(codigo_collar), 
                             empresa=joyeria)
         session.add(new_collar)
@@ -334,7 +334,7 @@ def pulseras(joyeria):
         new_pulsera = Pulseras(nombre=request.form['nombre'], 
                             descripcion=request.form['descripcion'], 
                             material=request.form['material'], 
-                            precio=request.form['precio'], 
+                            precio=float(request.form['precio']), 
                             codigo=int(codigo_pulsera), 
                             empresa=joyeria)
         session.add(new_pulsera)
@@ -362,7 +362,7 @@ def juegos_de_joyeria(joyeria):
         new_juego = Juegos_de_Joyeria(nombre=request.form['nombre'], 
                             descripcion=request.form['descripcion'], 
                             material=request.form['material'], 
-                            precio=request.form['precio'], 
+                            precio=float(request.form['precio']), 
                             codigo=int(codigo_juego), 
                             empresa=joyeria)
         session.add(new_juego)
