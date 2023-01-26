@@ -1,0 +1,40 @@
+/*Proveedores fashion*/
+.barra_desplasamiento{
+    background-color: rgb(255, 255, 255);
+    height: 400px;
+    overflow-y: scroll;
+    width: 355px;
+}
+  
+.box-1 {
+    margin-bottom: 0.25rem !important;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-content: center;
+  }
+
+  .mb-2 {
+    margin-bottom: 2.25rem !important;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-content: center;
+  
+  }
+
+/*buscador
+.buscar{
+  position: absolute;
+  padding: 5px;
+}
+
+.buscar input{
+    width: 240px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 18px;
+    color: black;
+}*/
