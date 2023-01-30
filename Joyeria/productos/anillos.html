@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-----------------Css---------------->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../estilos_productos.css">
+
+<!----------------JavaScript---------------->
+
+<!--Este script se puede guardar en una archivo js y
+   enlazar a este archivo html y funcionara igual -->
+    <script type="text/javascript">
+    (function(document) {
+      'use strict';
+
+      var LightTableFilter = (function(Arr) {
+
+        var _input;
+
+        function _onInputEvent(e) {
+          _input = e.target;
+          var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+          Arr.forEach.call(tables, function(table) {
+            Arr.forEach.call(table.tBodies, function(tbody) {
+              Arr.forEach.call(tbody.rows, _filter);
+            });
+          });
+        }
+
+        function _filter(row) {
+          var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+          row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+        }
+
+        return {
+          init: function() {
+            var inputs = document.getElementsByClassName('light-table-filter');
+            Arr.forEach.call(inputs, function(input) {
+              input.oninput = _onInputEvent;
+            });
+          }
+        };
+      })(Array.prototype);
+
+      document.addEventListener('readystatechange', function() {
+        if (document.readyState === 'complete') {
+          LightTableFilter.init();
+        }
+      });
+
+    })(document);
+    </script>
+  </head>
+
+  <body>
+<!-----------------TODO EL CONTENIDO---------------->
+    <div>
+    
+        <div class="container">
+            <div style="height:50px"></div>
+            <!-----------------TITULO---------------->
+            <h1 align="center" class="h1"> Anillos Fashion</h1>
+
+            <!-----------------Barr de busqueda---------------->
+            <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscar...">
+
+            <!-----------------Barra de desplasamiento---------------->
+            <div class="barra_desplasamiento box-1">
+                
+                <table class="table table-bordered order-table ">
+                    <thead class="table-dark" style="position: sticky; top:0; z-index:1">
+                      <tr><!---------Fila con los tirulos de la tabla----------->
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">X</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <td scope="row ">2020123</td>
+                      <td scope="row">Anillo uno</td>
+                      <td scope="row">oro</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">     
+                      </button>                     <!--estos enlacens que estan dentro de la etiqueta button se pueden colocar en un solo lugar y enlazar por medio de ID para que no este en cada etiqueta el enlace -->
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020234</td>
+                      <td scope="row">Anillo dos</td>
+                      <td scope="row">plata</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020335</td>
+                      <td scope="row">Anillo tres</td>
+                      <td scope="row">cobre</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020456</td>
+                      <td scope="row">Anillo cuatro</td>
+                      <td scope="row">acero</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020567</td>
+                      <td scope="row">Anillo sinco</td>
+                      <td scope="row">oro</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020789</td>
+                      <td scope="row">Anillo seis</td>
+                      <td scope="row">diamante</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                       <td scope="row ">2020012</td>
+                      <td scope="row">Anillo siete</td>
+                      <td scope="row">cobre</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="row ">2020345</td>
+                      <td scope="row">Anillo ocho</td>
+                      <td scope="row">acero</td>
+                      <td> <button type="button" class="eliminar1">
+                        <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0
+                        alt="boton basurero">
+                      </button> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row ">2020123</td>
+                        <td scope="row">Anillo uno</td>
+                        <td scope="row">oro</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020234</td>
+                        <td scope="row">Anillo dos</td>
+                        <td scope="row">plata</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020335</td>
+                        <td scope="row">Anillo tres</td>
+                        <td scope="row">cobre</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020456</td>
+                        <td scope="row">Anillo cuatro</td>
+                        <td scope="row">acero</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020567</td>
+                        <td scope="row">Anillo sinco</td>
+                        <td scope="row">oro</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020789</td>
+                        <td scope="row">Anillo seis</td>
+                        <td scope="row">diamante</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                         <td scope="row ">2020012</td>
+                        <td scope="row">Anillo siete</td>
+                        <td scope="row">cobre</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                      <tr>
+                        <td scope="row ">2020345</td>
+                        <td scope="row">Anillo ocho</td>
+                        <td scope="row">acero</td>
+                        <td> <button type="button" class="eliminar1">
+                          <img class="eliminar2" src="https://th.bing.com/th/id/R.f4a616caf615196ed50cc762a53c789f?rik=apzL1LAHZqE3pw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_307766.png&ehk=6R8MxmGJ4Y%2fahKUQiJE5LaV2yP7CxvNw6iwWq7XNZM0%3d&risl=&pid=ImgRaw&r=0"
+                          alt="boton basurero">
+                        </button> 
+                          </td>
+                      </tr>
+                  </table>
+                </div>
+            
+          </div> <!-- /container -->
+      </div>
+    <div class="mb-2">
+        <a class="btn btn-primary" href="#" role="button">Estadisticas</a>  <!--este es el botton para las estadistricas-->
+        <a class="btn btn-primary" href="#" role="button">Añadir</a>        <!--este es el botton para añadir un nuevo producto-->
+        <a class="btn btn-primary" href="../proveedores.html" role="button">Volver atrás</a> 
+        
+</div>
+  </body>
+</html>
