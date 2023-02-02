@@ -399,31 +399,50 @@ def Proveedores():
 @app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Anillos', methods=['GET', 'POST'])
 def Anillos_productos(joyeria):
     anillos = Anillos.query.filter_by(empresa=joyeria).all()
-    return render_template('productos.html', joyeria=joyeria, producto='Anillos', productos_lista = anillos)
+    return render_template('productos.html', joyeria=joyeria, producto='Anillos', productos_lista = anillos, page_back='Anillos_productos')
 
 
 @app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Aretes', methods=['GET', 'POST'])
 def Aretes_productos(joyeria):
     aretes = Aretes.query.filter_by(empresa=joyeria).all()
-    return render_template('productos.html', joyeria=joyeria, producto='Aretes', productos_lista=aretes)
+    return render_template('productos.html', joyeria=joyeria, producto='Aretes', productos_lista=aretes, page_back='Aretes_productos')
 
 
 @app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Collares', methods=['GET', 'POST'])
 def Collares_productos(joyeria):
     collares = Cadenas.query.filter_by(empresa=joyeria).all()
-    return render_template('productos.html', joyeria=joyeria, producto='Collares', productos_lista=collares)
+    return render_template('productos.html', joyeria=joyeria, producto='Collares', productos_lista=collares, page_back='Collares_productos')
 
 
 @app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Juego_de_joyeria', methods=['GET', 'POST'])
 def Juego_de_joyeria_productos(joyeria):
     juego = Juegos_de_Joyeria.query.filter_by(empresa=joyeria).all()
-    return render_template('productos.html', joyeria=joyeria, producto='Juegos de Joyeria', productos_lista=juego)
+    return render_template('productos.html', joyeria=joyeria, producto='Juegos de Joyeria', productos_lista=juego, page_back='Juego_de_joyeria_productos')
 
 
 @app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Pulseras', methods=['GET', 'POST'])
 def Pulseras_productos(joyeria):
     pulseras = Pulseras.query.filter_by(empresa=joyeria).all()
-    return render_template('productos.html', joyeria=joyeria, producto='Pulseras', productos_lista=pulseras)
+    return render_template('productos.html', joyeria=joyeria, producto='Pulseras', productos_lista=pulseras, page_back='Pulseras_productos')
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/<page_back>/vista de producto/<int:id>', methods=['GET', 'POST'])
+def vista_de_producto(joyeria, id, page_back):
+    if page_back == 'Anillos_productos':
+        unidad = Anillos.query.filter_by(id=id).one()
+    elif page_back == 'Aretes_productos':
+        unidad = Aretes.query.filter_by(id=id).one()
+    elif page_back == 'Collares_productos':
+        unidad = Cadenas.query.filter_by(id=id).one()
+    elif page_back == 'Juego_de_joyeria_productos':
+        unidad = Juegos_de_Joyeria.query.filter_by(id=id).one()
+    else:
+        unidad = Pulseras.query.filter_by(id=id).one()
+    
+    imagen = Imagenes.query.filter_by(codigo=unidad.codigo).one()
+        
+    img = base64.b64encode(BytesIO(imagen.imagen).getvalue())
+
+    return render_template('vista_productos.html', joyeria=joyeria, unidad=unidad, page_back=page_back, img=img)
 
 if __name__ == '__main__':
     app.secret_key = 'secret_key10'

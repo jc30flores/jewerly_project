@@ -49,8 +49,9 @@
                       <td scope="row">{{producto.nombre}}</td>
                       <td scope="row">{{producto.material}}</td>
                       <td> <button type="button" class="ver">
-                      <img class="eliminar2" src="/static/Ver.png"
-                        alt="boton basurero">     
+                        <a href="{{url_for('vista_de_producto', joyeria=joyeria, id=producto.id, page_back=page_back)}}">
+                          <img class="eliminar2" src="/static/Ver.png" alt="boton vista">     
+                        </a>
                       </button>                     
                         </td>
                     </tr>
