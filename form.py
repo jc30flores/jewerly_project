@@ -10,3 +10,8 @@ class EnterData(Form):
     material = StringField('Material del Producto', validators=[InputRequired()])
     precio = DecimalField('Precio', validators=[InputRequired()])
     imagen = FileField('Agregar una foto del Producto', validators=[FileAllowed(['jpg', 'png'], 'Solo se permiten imagenes')])
+
+class Inicio_de_Sesion(Form):
+    usuario = StringField('Nombre de Usuario', validators=[InputRequired()])
+    clave = PasswordField('Contraseña', validators=[InputRequired()])
+

@@ -1,0 +1,92 @@
+
+/*estilos de barra de busqueda*/
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #a4acb5;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+margin: auto;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+}
+
+/* estilos de tabla y botones */
+.barra_desplasamiento{
+  background-color: rgb(255, 255, 255);
+  height: 400px;
+  overflow-y: scroll;
+  width: 355px;
+}
+
+.box-1 {
+  margin-bottom: 0.25rem !important;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-content: center;
+}
+
+.mb-2 {
+  margin-bottom: 3.25rem !important;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-content: center;
+
+}
+
+.eliminar0{
+  color: black;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 0%;
+  border:0px;
+}
+
+.eliminar2{
+  width: 30px;
+  height: 20px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  }
+
+.ver{
+  color: rgb(10, 10, 10);
+  background-color: rgb(0, 162, 255);
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+}
+
+
+.table td {
+  padding: 0.00rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}

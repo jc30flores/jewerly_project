@@ -14,7 +14,7 @@ import time
 import pandas as pd
 from sqlalchemy import desc
 from sqlalchemy import and_
-from form import EnterData
+from form import EnterData, Inicio_de_Sesion
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -253,8 +253,6 @@ def anillos(joyeria):
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_anillo), 
                             empresa=joyeria)
-        session.add(new_anillo)
-        session.commit()
 
         new_imagen = Imagenes(nombre=request.form['nombre'], 
                             codigo=int(codigo_anillo), 
@@ -378,6 +376,54 @@ def juegos_de_joyeria(joyeria):
         return redirect(url_for('juegos_de_joyeria', joyeria=joyeria, menu_principal=menu_principal))
     else:
         return render_template('juegos_de_joyeria.html', form=form, joyeria=joyeria, menu_principal=menu_principal)
+
+@app.route('/index/Inicio_de_sesion', methods=['GET', 'POST'])
+def Inicio_de_sesion():
+    usuarios = ['Norma', 'Tj', 'Kevin']
+    clave = 10203040
+    form = Inicio_de_Sesion()
+    if request.method == 'POST':
+        if request.form['usuario'] in usuarios and int(request.form['clave']) == clave:
+            return redirect(url_for('Proveedores'))
+        else:
+            flash('Su clave o usuario son incorrectos')
+            return redirect(url_for('Inicio_de_sesion'))
+    else:
+        return render_template('Inicio.html', form=form)
+
+@app.route('/index/Inicio_de_sesion/proveedores', methods=['GET', 'POST'])
+def Proveedores():
+    return render_template('proveedores.html')
+
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Anillos', methods=['GET', 'POST'])
+def Anillos_productos(joyeria):
+    anillos = Anillos.query.filter_by(empresa=joyeria).all()
+    return render_template('productos.html', joyeria=joyeria, producto='Anillos', productos_lista = anillos)
+
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Aretes', methods=['GET', 'POST'])
+def Aretes_productos(joyeria):
+    aretes = Aretes.query.filter_by(empresa=joyeria).all()
+    return render_template('productos.html', joyeria=joyeria, producto='Aretes', productos_lista=aretes)
+
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Collares', methods=['GET', 'POST'])
+def Collares_productos(joyeria):
+    collares = Cadenas.query.filter_by(empresa=joyeria).all()
+    return render_template('productos.html', joyeria=joyeria, producto='Collares', productos_lista=collares)
+
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Juego_de_joyeria', methods=['GET', 'POST'])
+def Juego_de_joyeria_productos(joyeria):
+    juego = Juegos_de_Joyeria.query.filter_by(empresa=joyeria).all()
+    return render_template('productos.html', joyeria=joyeria, producto='Juegos de Joyeria', productos_lista=juego)
+
+
+@app.route('/index/Inicio_de_sesion/proveedores/<joyeria>/Pulseras', methods=['GET', 'POST'])
+def Pulseras_productos(joyeria):
+    pulseras = Pulseras.query.filter_by(empresa=joyeria).all()
+    return render_template('productos.html', joyeria=joyeria, producto='Pulseras', productos_lista=pulseras)
 
 if __name__ == '__main__':
     app.secret_key = 'secret_key10'
