@@ -60,20 +60,29 @@ line-height: inherit;
 
 }
 
-.eliminar1{
-  color: rgb(10, 10, 10);
-  background-color: red;
+.eliminar0{
+  color: black;
+  background-color: white;
   width: 100%;
   height: 100%;
-  border-radius: 10%;
+  border-radius: 0%;
+  border:0px;
 }
-  
+
 .eliminar2{
-  width: 20px;
+  width: 30px;
   height: 20px;
   margin-top: 0px;
   margin-bottom: 3px;
   }
+
+.ver{
+  color: rgb(10, 10, 10);
+  background-color: rgb(0, 162, 255);
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+}
 
 
 .table td {
@@ -81,4 +90,3 @@ line-height: inherit;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
-
