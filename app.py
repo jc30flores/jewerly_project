@@ -15,6 +15,7 @@ import pandas as pd
 from sqlalchemy import desc
 from sqlalchemy import and_
 from form import EnterData, Inicio_de_Sesion
+from datetime import date
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -51,6 +52,8 @@ class Anillos(db.Model):
     precio = db.Column(db.Integer)
     codigo = db.Column(db.Integer)
     empresa = db.Column(db.String())
+    fecha_ingreso = db.Column(db.String())
+    fecha_egreso = db.Column(db.String())
 
     @property
     def serialize(self):
@@ -61,8 +64,9 @@ class Anillos(db.Model):
             'material': self.material,
             'precio': self.precio,
             'codigo': self.codigo,
-            'empresa': self.empresa
-
+            'empresa': self.empresa,
+            'fecha_ingreso': self.fecha_ingreso,
+            'fecha_egreso': self.fecha_egreso
         }
         
 class Cadenas(db.Model):
@@ -85,6 +89,8 @@ class Cadenas(db.Model):
     precio = db.Column(db.Integer)
     codigo = db.Column(db.Integer)
     empresa = db.Column(db.String())
+    fecha_ingreso = db.Column(db.String())
+    fecha_egreso = db.Column(db.String())
 
     @property
     def serialize(self):
@@ -95,7 +101,9 @@ class Cadenas(db.Model):
             'material': self.material,
             'precio': self.precio,
             'codigo': self.codigo,
-            'empresa': self.empresa
+            'empresa': self.empresa,
+            'fecha_ingreso': self.fecha_ingreso,
+            'fecha_egreso': self.fecha_egreso
         }
 
 class Pulseras(db.Model):
@@ -118,6 +126,8 @@ class Pulseras(db.Model):
     precio = db.Column(db.Integer)
     codigo = db.Column(db.Integer)
     empresa = db.Column(db.String())
+    fecha_ingreso = db.Column(db.String())
+    fecha_egreso = db.Column(db.String())
 
     @property
     def serialize(self):
@@ -128,7 +138,9 @@ class Pulseras(db.Model):
             'material': self.material,
             'precio': self.precio,
             'codigo': self.codigo,
-            'empresa': self.empresa
+            'empresa': self.empresa,
+            'fecha_ingreso': self.fecha_ingreso,
+            'fecha_egreso': self.fecha_egreso
         }
 
 class Aretes(db.Model):
@@ -151,6 +163,8 @@ class Aretes(db.Model):
     precio = db.Column(db.Integer)
     codigo = db.Column(db.Integer)
     empresa = db.Column(db.String())
+    fecha_ingreso = db.Column(db.String())
+    fecha_egreso = db.Column(db.String())
 
     @property
     def serialize(self):
@@ -161,7 +175,9 @@ class Aretes(db.Model):
             'material': self.material,
             'precio': self.precio,
             'codigo': self.codigo,
-            'empresa': self.empresa
+            'empresa': self.empresa,
+            'fecha_ingreso': self.fecha_ingreso,
+            'fecha_egreso': self.fecha_egreso
         }
 
 class Juegos_de_Joyeria(db.Model):
@@ -184,6 +200,9 @@ class Juegos_de_Joyeria(db.Model):
     precio = db.Column(db.Integer)
     codigo = db.Column(db.Integer)
     empresa = db.Column(db.String())
+    fecha_ingreso = db.Column(db.String())
+    fecha_egreso = db.Column(db.String())
+    
 
     @property
     def serialize(self):
@@ -194,7 +213,9 @@ class Juegos_de_Joyeria(db.Model):
             'material': self.material,
             'precio': self.precio,
             'codigo': self.codigo,
-            'empresa': self.empresa
+            'empresa': self.empresa,
+            'fecha_ingreso': self.fecha_ingreso,
+            'fecha_egreso': self.fecha_egreso
         }
 
 class Imagenes(db.Model):
@@ -252,7 +273,11 @@ def anillos(joyeria):
                             material=request.form['material'], 
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_anillo), 
-                            empresa=joyeria)
+                            empresa=joyeria,
+                            fecha_ingreso=date.today())
+
+        session.add(new_anillo)
+        session.commit()       
 
         new_imagen = Imagenes(nombre=request.form['nombre'], 
                             codigo=int(codigo_anillo), 
@@ -278,7 +303,8 @@ def aretes(joyeria):
                             material=request.form['material'], 
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_arete), 
-                            empresa=joyeria)
+                            empresa=joyeria,
+                            fecha_ingreso=date.today())
         session.add(new_arete)
         session.commit()
 
@@ -306,7 +332,8 @@ def cadenas(joyeria):
                             material=request.form['material'], 
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_collar), 
-                            empresa=joyeria)
+                            empresa=joyeria,
+                            fecha_ingreso=date.today())
         session.add(new_collar)
         session.commit()
 
@@ -334,7 +361,8 @@ def pulseras(joyeria):
                             material=request.form['material'], 
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_pulsera), 
-                            empresa=joyeria)
+                            empresa=joyeria,
+                            fecha_ingreso=date.today())
         session.add(new_pulsera)
         session.commit()
 
@@ -362,7 +390,8 @@ def juegos_de_joyeria(joyeria):
                             material=request.form['material'], 
                             precio=float(request.form['precio']), 
                             codigo=int(codigo_juego), 
-                            empresa=joyeria)
+                            empresa=joyeria,
+                            fecha_ingreso=date.today())
         session.add(new_juego)
         session.commit()
 

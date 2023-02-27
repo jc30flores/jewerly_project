@@ -14,9 +14,9 @@
 </head>
 <body>
     <h1 align="center" class="titulo">En existencias</h1>
-    <div class=" text-center">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_742057-MLM32691265970_102019-O.jpg" class="img-fluid" alt="imagen_producto">
-      </div>
+    <div class="img-thumbnail">
+      <img src="/static/logo.png" class="img-thumbnail"  alt="logo">
+    </div>
       <ul class="list-group centrar_tanbla" >
         <li class="list-group-item"> <strong>Nombre :</strong>  {{unidad.nombre}}</li>
         <li class="list-group-item"> <strong>Empresa :</strong>  {{joyeria}}</li>
@@ -26,8 +26,12 @@
             </p>
         </li>
         <li class="list-group-item"> <strong>Precio :</strong>  ${{unidad.precio}}</li>
-        <li class="list-group-item"> <strong>Fecha de ingreso :</strong> 04/05/2022</li>
-        <li class="list-group-item"> <strong>Fecha de venta :</strong> 01/02/2023</li>
+        <li class="list-group-item"> <strong>Fecha de ingreso :</strong> {{unidad.fecha_ingreso}}</li>
+        {% if unidad.fecha_egreso != None %}
+        <li class="list-group-item"> <strong>Fecha de venta :</strong> {{unidad.fecha_egreso}}</li>
+        {% else %}
+        <li class="list-group-item"> <strong>Fecha de venta :</strong> En existencias</li>
+        {% endif %}
       </ul>
       <div class="mb-2">
         <a class="btn btn-danger" href="#" role="button">Eliminar</a> 

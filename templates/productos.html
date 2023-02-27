@@ -14,6 +14,7 @@
 <!--Este script se puede guardar en una archivo js y
    enlazar a este archivo html y funcionara igual -->
     <script src="/static/search.js"></script>
+    <title>Productos</title>
   </head>
 
   <body>
@@ -66,7 +67,13 @@
       </div>
     <div class="mb-2">
         <a class="btn btn-primary" href="#" role="button">Estadisticas</a>  <!--este es el botton para las estadistricas-->
-        <a class="btn btn-primary" href="{{url_for('anillos', joyeria=joyeria)}}" role="button">Añadir</a><!--este es el botton para añadir un nuevo producto-->
+        {% if producto == 'Juegos de Joyeria' %}
+          <a class="btn btn-primary" href="{{url_for('juegos_de_joyeria', joyeria=joyeria)}}" role="button">Añadir</a><!--este es el botton para añadir un nuevo producto-->
+        {% elif producto == 'Collares' %}
+          <a class="btn btn-primary" href="{{url_for('cadenas', joyeria=joyeria)}}" role="button">Añadir</a><!--este es el botton para añadir un nuevo producto-->
+        {% else %}
+        <a class="btn btn-primary" href="{{url_for(producto.lower(), joyeria=joyeria)}}" role="button">Añadir</a><!--este es el botton para añadir un nuevo producto-->
+        {% endif %}
         <a class="btn btn-primary" href="{{url_for('Proveedores')}}" role="button">Volver atrás</a> 
         
 </div>

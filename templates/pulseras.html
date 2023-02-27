@@ -28,7 +28,7 @@
             {% endwith %} 
             <br>
         </center>
-        <form action="{{url_for('anillos', joyeria=joyeria)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url_for('pulseras', joyeria=joyeria)}}" method="POST" enctype="multipart/form-data">
             <h3>{{ wtf.form_field(form.nombre) }}</h3>
             <br>
             <h3>{{ wtf.form_field(form.precio) }}</h3>
